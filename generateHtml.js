@@ -5,7 +5,7 @@ const generateTag = function (tag, tagClass, content = '') {
 };
 
 const getColour = function (colourCode) {
-  const colours = ['', 'red', 'blue'];
+  const colours = ['', 'red', 'blue', 'yellow', 'green', 'purple'];
   return colours[colourCode];
 };
 

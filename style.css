@@ -5,13 +5,15 @@ body {
 }
 
 .wrapper {
+  width: 100%;
   display: flex;
-  margin: 150px;
+  margin-top: 180px;
 }
 
 .glass {
   border: 2px solid black;
-  margin: 40px;
+  margin-right: 40px;
+  margin-left: 40px;
   height: 300px;
   width: 100px;
   display: flex;
@@ -28,6 +30,18 @@ body {
   background-color: palevioletred;
 }
 
+.yellow {
+  background-color: yellow;
+}
+
 .blue {
   background-color: lightskyblue;
+}
+
+.green {
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
 }

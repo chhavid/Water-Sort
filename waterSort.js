@@ -1,16 +1,20 @@
 const fs = require('fs');
 const { exit } = require('process');
 
-const isGlassValid = function (glass) {
-  return /^[1-3]$/.test(glass);
+const glassCount = function (game) {
+  return Object.keys(game).length;
 };
 
-const areGlassesValid = function (glass1, glass2) {
-  return [glass1, glass2].every(isGlassValid);
+const isGlassValid = function (game, glass) {
+  return glass > 0 && glass <= glassCount(game);
+};
+
+const areGlassesValid = function (game, glass1, glass2) {
+  return [glass1, glass2].every((glass) => isGlassValid(game, glass));
 };
 
 const isGlassFull = function (game, glass) {
-  return game['glass' + glass].length === 3;
+  return game['glass' + glass].length === glassCount(game);
 };
 
 const isGlassEmpty = function (game, glass) {
@@ -18,7 +22,7 @@ const isGlassEmpty = function (game, glass) {
 };
 
 const isMoveInvalid = function (glass1, glass2, game) {
-  if (!areGlassesValid(glass1, glass2)) {
+  if (!areGlassesValid(game, glass1, glass2)) {
     return true;
   }
   return isGlassEmpty(game, glass1) || isGlassFull(game, glass2);
