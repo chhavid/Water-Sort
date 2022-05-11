@@ -5,11 +5,8 @@ const generateTag = function (tag, tagClass, content = '') {
 };
 
 const getColour = function (colourCode) {
-  let colour = 'red';
-  if (colourCode === 2) {
-    colour = 'blue';
-  }
-  return colour;
+  const colours = ['', 'red', 'blue'];
+  return colours[colourCode];
 };
 
 const singleRow = function (game, glass) {
