@@ -9,9 +9,12 @@ const getColour = function (colourCode) {
   return colours[colourCode];
 };
 
+const getWater = function (colourCode) {
+  return generateTag('div', 'water-block ' + getColour(colourCode));
+};
+
 const singleRow = function (game, glass) {
-  const row = game[glass].map((code) =>
-    generateTag('div', 'water-block ' + getColour(code)));
+  const row = game[glass].map(getWater);
   return generateTag('div', 'glass', row.join(''));
 };
 
