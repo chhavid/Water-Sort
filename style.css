@@ -1,0 +1,33 @@
+body {
+  width: 960px;
+  background-color: whitesmoke;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  margin: 150px;
+}
+
+.glass {
+  border: 2px solid black;
+  margin: 40px;
+  height: 300px;
+  width: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.water-block {
+  height: 30%;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.41);
+}
+
+.red {
+  background-color: palevioletred;
+}
+
+.blue {
+  background-color: lightskyblue;
+}
