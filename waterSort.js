@@ -1,25 +1,21 @@
 const fs = require('fs');
 const { exit } = require('process');
 
-const glassCount = function (game) {
-  return Object.keys(game).length;
-};
+const glassCount = game =>
+  Object.keys(game).length;
 
-const isGlassValid = function (game, glass) {
-  return glass > 0 && glass <= glassCount(game);
-};
+const isGlassValid = (game, glass) =>
+  glass > 0 && glass <= glassCount(game);
 
 const areGlassesValid = function (game, glass1, glass2) {
   return [glass1, glass2].every((glass) => isGlassValid(game, glass));
 };
 
-const isGlassFull = function (game, glass) {
-  return game['glass' + glass].length === glassCount(game);
-};
+const isGlassFull = (game, glass) =>
+  game['glass' + glass].length === glassCount(game);
 
-const isGlassEmpty = function (game, glass) {
-  return game['glass' + glass].length === 0;
-};
+const isGlassEmpty = (game, glass) =>
+  game['glass' + glass].length === 0;
 
 const isMoveInvalid = function (glass1, glass2, game) {
   if (!areGlassesValid(game, glass1, glass2)) {
@@ -28,9 +24,8 @@ const isMoveInvalid = function (glass1, glass2, game) {
   return isGlassEmpty(game, glass1) || isGlassFull(game, glass2);
 };
 
-const isEmptyOrFull = function (length) {
-  return length === 0 || length === 3;
-};
+const isEmptyOrFull = (length) =>
+  length === 0 || length === 3;
 
 const isColourSame = function (game, glass) {
   return game[glass].every((block, index, array) =>
@@ -42,9 +37,8 @@ const isSameWater = function (game, glass) {
   return isColourSame(game, glass) && isEmptyOrFull(length);
 };
 
-const isGameFinished = function (game) {
-  return Object.keys(game).every((glass) => isSameWater(game, glass));
-};
+const isGameFinished = (game) =>
+  Object.keys(game).every((glass) => isSameWater(game, glass));
 
 const pourwater = function (game, pick, pour) {
   game[pour].push(game[pick].pop());
