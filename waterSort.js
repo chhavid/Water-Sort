@@ -51,11 +51,19 @@ const pourwater = function (game, pick, pour) {
 };
 
 const getObject = function (file) {
-  return JSON.parse(fs.readFileSync(file, 'utf8'));
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (error) {
+    throw 'Invalid file';
+  }
 };
 
 const writeFile = function (file, game) {
-  fs.writeFileSync(file, JSON.stringify(game, null, 2), 'utf8');
+  try {
+    fs.writeFileSync(file, JSON.stringify(game, null, 2), 'utf8');
+  } catch (error) {
+    throw 'Could not write file.';
+  }
 };
 
 const updateMove = function (game, pick, pour) {
