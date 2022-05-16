@@ -8,6 +8,7 @@ body {
   width: 100%;
   display: flex;
   margin-top: 180px;
+  justify-content: center;
 }
 
 .glass {
@@ -18,6 +19,8 @@ body {
   width: 100px;
   display: flex;
   flex-direction: column-reverse;
+  border-radius: 0 0 50px 50px;
+  overflow: hidden;
 }
 
 .water-block {
