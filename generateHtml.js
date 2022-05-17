@@ -25,8 +25,9 @@ const generateRows = function (game) {
 };
 
 const header = function () {
-  return '<head><title>Tic Tac Toe</title>' +
-    '<link rel = "stylesheet" href = "style.css"></head> ';
+  return '<head><title>Water Sort</title>' +
+    '<link rel = "stylesheet" href = "style.css">' +
+    '<meta http-equiv="refresh" content="0.5"></head>';
 };
 
 const body = function (game) {

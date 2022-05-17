@@ -11,7 +11,7 @@ while [[ $? == 0 ]]; do
 
   node waterSort.js ${pick} ${pour}
   exitcode=$?
-  node generateHtml.js;open waterSort.html
+  node generateHtml.js
   echo "exit" ${exitcode} | bash
 done 
 
