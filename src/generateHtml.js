@@ -26,7 +26,7 @@ const generateRows = function (game) {
 
 const header = function () {
   return '<head><title>Water Sort</title>' +
-    '<link rel = "stylesheet" href = "style.css">' +
+    '<link rel = "stylesheet" href = "./src/style.css">' +
     '<meta http-equiv="refresh" content="0.5"></head>';
 };
 
@@ -39,8 +39,7 @@ const generateHtml = function (game) {
 };
 
 const main = function () {
-  const game = JSON.parse(fs.readFileSync('waterSort.json', 'utf-8'));
-
+  const game = JSON.parse(fs.readFileSync('./src/waterSort.json', 'utf-8'));
   fs.writeFileSync('waterSort.html', generateHtml(game), 'utf8');
 };
 

@@ -12,7 +12,7 @@ const areGlassesValid = function (game, glass1, glass2) {
 };
 
 const isGlassFull = (game, glass) =>
-  game['glass' + glass].length === glassCount(game);
+  game['glass' + glass].length === 3;
 
 const isGlassEmpty = (game, glass) =>
   game['glass' + glass].length === 0;
@@ -62,7 +62,7 @@ const writeFile = function (file, game) {
 
 const updateMove = function (game, pick, pour) {
   pourwater(game, 'glass' + pick, 'glass' + pour);
-  writeFile('waterSort.json', game);
+  writeFile('./src/waterSort.json', game);
 };
 
 const printError = function () {
@@ -71,7 +71,7 @@ const printError = function () {
 
 const main = function () {
   const [pick, pour] = process.argv.slice(2);
-  const game = getObject('waterSort.json');
+  const game = getObject('./src/waterSort.json');
   isMoveInvalid(pick, pour, game) ? printError() : updateMove(game, pick, pour);
   if (isGameFinished(game)) {
     exit(2);
