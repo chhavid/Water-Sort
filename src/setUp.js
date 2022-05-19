@@ -4,17 +4,24 @@ const randomNumber = function (limit) {
   return Math.floor(Math.random() * limit);
 };
 
-const levels = [{ "glass1": [1, 2, 1], "glass2": [2, 1, 2], "glass3": [] },
-{ "glass1": [1, 2, 1], "glass2": [2, 1, 3], "glass3": [3, 2, 3], "glass4": [] },
-{ "glass1": [1, 1, 1], "glass2": [2, 2, 2], "glass3": [3, 3], "glass4": [4, 4, 4], "glass5": [3] }, { "glass1": [1, 1, 1], "glass2": [2, 2, 2], "glass3": [3, 3], "glass4": [4, 4, 4], "glass5": [3], "glass6": [5, 5, 5] }
+const levels = [
+  [[1, 2, 1], [2, 1, 2], []],
+  [[1, 2, 1], [2, 1, 3], [3, 2, 3], []],
+  [[1, 1, 1], [2, 2, 2], [3, 3], [4, 4, 4], [3]],
+  [[1, 1, 1], [2, 2, 2], [3, 3], [4, 4], [3, 5], [5, 5, 4]],
 ];
 
 const selectLevel = levels => levels[randomNumber(4)];
 
+const gameObject = function (levels) {
+  return {
+    'glasses': selectLevel(levels),
+    'capacity': 3
+  };
+};
 const main = function (levels) {
-  const level = selectLevel(levels);
-
-  fs.writeFileSync('./src/waterSort.json', JSON.stringify(level), 'utf-8');
+  const game = gameObject(levels);
+  fs.writeFileSync('./src/waterSort.json', JSON.stringify(game), 'utf-8');
 };
 
 main(levels);

@@ -13,15 +13,15 @@ const getWater = function (colourCode) {
   return generateTag('div', 'water-block ' + getColour(colourCode));
 };
 
-const singleRow = function (game, glass) {
-  const row = game[glass].map(getWater);
+const singleRow = function (glass) {
+  const row = glass.map(getWater);
   return generateTag('div', 'glass', row.join(''));
 };
 
 const generateRows = function (game) {
-  const glasses = Object.keys(game);
+  const glasses = game.glasses;
   return glasses.map((glass) =>
-    singleRow(game, glass)).join('');
+    singleRow(glass)).join('');
 };
 
 const header = function () {

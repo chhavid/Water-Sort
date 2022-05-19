@@ -4,23 +4,23 @@ const { exit } = require('process');
 const areGlassesValid = (glass1, glass2) =>
   glass1 && glass2;
 
-const isGlassFull = (glass) => glass.length === 3;
+const isGlassFull = (glass, capacity) => glass.length === capacity;
 
 const isGlassEmpty = (glass) => glass.length === 0;
 
 const isMoveInvalid = function (glass1, glass2, game) {
-  const first = game['glass' + glass1];
-  const second = game['glass' + glass2];
+  const first = game.glasses[glass1 - 1];
+  const second = game.glasses[glass2 - 1];
   if (!areGlassesValid(first, second)) {
     return true;
   }
-  return isGlassEmpty(first) || isGlassFull(second);
+  return isGlassEmpty(first) || isGlassFull(second, game.capacity);
 };
 
 const isEmptyOrFull = (glass) => {
-  const length = glass.length;
-  return length === 0 || length === 3;
-}
+  const capacity = 3;
+  return isGlassEmpty(glass) || isGlassFull(glass, capacity);
+};
 
 const isColourSame = function (glass) {
   return glass.every((block, index, array) =>
@@ -31,10 +31,10 @@ const isSameWater = (glass) =>
   isColourSame(glass) && isEmptyOrFull(glass);
 
 const isGameFinished = (game) =>
-  Object.values(game).every((glass) => isSameWater(glass));
+  game.glasses.every((glass) => isSameWater(glass));
 
-const pourwater = function (game, pick, pour) {
-  game[pour].push(game[pick].pop());
+const pourwater = function (pick, pour) {
+  pour.push(pick.pop());
 };
 
 const getObject = function (file) {
@@ -54,7 +54,7 @@ const writeFile = function (file, game) {
 };
 
 const updateMove = function (game, pick, pour) {
-  pourwater(game, 'glass' + pick, 'glass' + pour);
+  pourwater(game.glasses[pick - 1], game.glasses[pour - 1]);
   writeFile('./src/waterSort.json', game);
 };
 
